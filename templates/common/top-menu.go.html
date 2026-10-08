@@ -1,0 +1,35 @@
+{{ define "top-menu" }}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">The Go Web Template</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/start">Start Here</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    {{ if .IsAuthenticated }}
+                        <span class="navbar-text">{{ .UserEmail }}</span>
+                        <form method="POST" action="/logout">
+                            <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">Sign out</button>
+                        </form>
+                    {{ else }}
+                        <a href="/login" class="btn btn-outline-primary btn-sm">Sign in</a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </nav>
+{{ end }}

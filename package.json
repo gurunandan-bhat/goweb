@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@tabler/core": "^1.4.0",
+    "axios": "^1.15.0",
+    "dom7": "^4.0.6",
+    "sweetalert2": "^11.26.24"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "esbuild": "^0.28.0",
+    "globals": "^17.5.0",
+    "prettier-plugin-go-template": "^0.0.15"
+  },
+  "scripts": {
+    "build": "esbuild assets/js/inc/main.js --bundle --minify --outfile=assets/js/bundle.js",
+    "dev":   "esbuild assets/js/inc/main.js --bundle --sourcemap --outfile=assets/js/bundle.js --watch"
+  }
+}
